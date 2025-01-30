@@ -36,9 +36,9 @@ def findAdditiveInverse(operationTable, elements,identity):
     
     return inverseDict
 
-def getAllInverses(operationTable, elements):
+def getAllInverses(operationTable, elements,identity):
     """Returns an array of additive inverses."""
-    inverses = findAdditiveInverse(operationTable, elements)
+    inverses = findAdditiveInverse(operationTable, elements,identity)
     return [inverses.get(e, None) for e in elements]
 
 def isAssociative(operationTable, elements):
@@ -56,14 +56,14 @@ def isAssociative(operationTable, elements):
 
 # Example usage
 if __name__ == "__main__":
-    operationTable = [[0, 1], [1, 0]]  # Replace with actual operation table
+    operationTable = [["a", "b"], ["b", "a"]]  # Replace with actual operation table
     elements = list(set(sum(operationTable, [])))
     elements.sort()
-    identity = findIndentity(operationTable,elements)
+    identity = findIdentity(operationTable,elements)
     
     print("Non-empty:", isNonEmpty(operationTable))
     print("Closed under operation:", isClosed(operationTable, elements))
     print("Identity element:", findIdentity(operationTable, elements))
-    print("Additive inverses:", findAdditiveInverse(operationTable, elements))
-    print("Array of inverses:", getAllInverses(operationTable, elements))
+    print("Additive inverses:", findAdditiveInverse(operationTable, elements,identity))
+    print("Array of inverses:", getAllInverses(operationTable, elements,identity))
     print("Associativity:", isAssociative(operationTable, elements))
